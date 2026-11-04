@@ -121,20 +121,20 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
               
         if subEvent == "UNIT_DIED" then
             local idType = strsplit("-", destGUID or "")
-            if idType == "Player" then
-                -- Verify if the deceased player is in your guild
+            if idType == "Player" and destName then
+                -- Verify if the deceased player is in your guild using exact full names
                 local isGuildMember = false
                 if IsInGuild() then
                     for i = 1, GetNumGuildMembers() do
                         local name = GetGuildRosterInfo(i)
-                        if name and strcmputil and strcmputil(name, destName) or (name and name:find(destName)) then
+                        if name and name == destName then
                             isGuildMember = true
                             break
                         end
                     end
                 end
 
-                -- If the local player dies or a detected guild member dies locally
+                -- If the local player dies or a detected guild member dies
                 if destName == UnitName("player") or isGuildMember then
                     local zoneText = GetRealZoneText() or "Unknown Zone"
                     local exactTime = date("%H:%M")
