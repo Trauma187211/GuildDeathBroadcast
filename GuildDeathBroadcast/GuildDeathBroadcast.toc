@@ -1,0 +1,7 @@
+## Interface: 16001
+## Title: Guild Death Broadcast
+## Author: TraumaWoW
+## Version: 1.0
+## Notes: Broadcasts PvP Death Messages to a lightweight, standalone death tracker window
+
+GuildDeathBroadcast.lua
